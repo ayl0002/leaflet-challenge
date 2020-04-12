@@ -77,4 +77,6 @@ function createMap(earthquakeData) {
   L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
   }).addTo(myMap);
+
+
 }
