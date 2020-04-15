@@ -24,8 +24,9 @@ function ColorCheck(d) {
       return "green";
   } else if (d >= 4) {
       return "blue";
-  } else {
-      return "#black";
+  }
+   else {
+      return "black";
   };
 }
 
@@ -79,4 +80,26 @@ function createMap(earthquakeData) {
   }).addTo(myMap);
 
 
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function () {
+
+  var div = L.DomUtil.create('div', 'info legend'),
+  labels = ['<strong>Categories</strong>'],
+  categories = [3, 4, 5, 5.5, 6, 6.5];
+
+  for (var i = 0; i < categories.length; i++) {
+    div.innerHTML += 
+    labels.push(
+        '<i style="background:' + ColorCheck(categories[i]) + '"></i> ' +
+        (categories[i] ? categories[i] : '+'));
+}
+
+div.innerHTML = labels.join('<br>');
+return div;
+
+ };
+
+legend.addTo(myMap);
+  
 }
